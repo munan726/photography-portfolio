@@ -479,10 +479,10 @@ h1 strong {
 .album-group {
   position: relative;
   width: min(1500px, calc(100% - 56px));
-  min-height: 760px;
+  min-height: clamp(620px, 74vh, 820px);
   margin: 0 auto 76px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(260px, 0.48fr) minmax(0, 1.52fr);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   scroll-margin-top: 88px;
@@ -497,8 +497,9 @@ h1 strong {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-width: 0;
-  padding: clamp(42px, 5vw, 78px);
+  padding: clamp(26px, 3vw, 48px);
   color: #111;
   background: #d34536;
 }
@@ -540,27 +541,28 @@ h1 strong {
 }
 
 .chapter-route {
-  margin: 54px 0 18px;
+  margin: 0 0 14px;
+  opacity: 0.86;
 }
 
 .album-group h3 {
   margin: 0;
-  font-size: clamp(76px, 8vw, 132px);
-  line-height: 0.82;
+  font-size: clamp(42px, 4.6vw, 82px);
+  line-height: 0.88;
   letter-spacing: -0.08em;
 }
 
 .chapter-line {
-  width: min(350px, 70%);
-  height: 5px;
-  margin: 28px 0 18px;
+  width: min(210px, 64%);
+  height: 3px;
+  margin: 18px 0 12px;
   background: currentColor;
   opacity: 0.78;
 }
 
 .chapter-cn {
-  margin: 0 0 18px;
-  font-size: clamp(24px, 2.3vw, 38px);
+  margin: 0 0 12px;
+  font-size: clamp(17px, 1.55vw, 24px);
   line-height: 1.1;
   opacity: 0.45;
 }
@@ -569,7 +571,7 @@ h1 strong {
   margin: 0;
   color: #f2d96b;
   font-family: Georgia, serif;
-  font-size: 18px;
+  font-size: clamp(13px, 1vw, 16px);
   font-style: italic;
   font-weight: 700;
   line-height: 1.5;
@@ -585,10 +587,10 @@ h1 strong {
 }
 
 .chapter-foot {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 26px;
-  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 40px;
   opacity: 0.72;
 }
 
@@ -597,16 +599,18 @@ h1 strong {
 }
 
 .chapter-foot p:last-child {
-  grid-column: 1 / -1;
-  margin-top: 28px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .chapter-photo {
   position: relative;
   min-width: 0;
-  min-height: 760px;
+  min-height: clamp(620px, 74vh, 820px);
   overflow: hidden;
-  background: #111;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 28%),
+    #090909;
 }
 
 .chapter-photo::before {
@@ -630,6 +634,7 @@ h1 strong {
   position: absolute;
   inset: 0;
   opacity: 0;
+  object-fit: contain;
   filter: saturate(0.92) contrast(1.06);
   transform: translateX(-100%);
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.72s ease, filter 0.32s ease;
@@ -772,8 +777,12 @@ h1 strong {
     min-height: 0;
   }
 
+  .chapter-panel {
+    min-height: 240px;
+  }
+
   .chapter-photo {
-    min-height: 620px;
+    min-height: min(680px, 72vh);
   }
 }
 
@@ -879,20 +888,45 @@ h1 strong {
   }
 
   .chapter-panel {
-    padding: 42px 18px;
+    min-height: 200px;
+    padding: 24px 18px 22px;
+  }
+
+  .chapter-route {
+    display: none;
   }
 
   .album-group h3 {
-    font-size: clamp(58px, 17vw, 92px);
+    font-size: clamp(34px, 11vw, 58px);
+  }
+
+  .chapter-line {
+    width: min(180px, 58%);
+    height: 2px;
+    margin: 12px 0 10px;
+  }
+
+  .chapter-cn {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .chapter-sub {
+    font-size: 13px;
   }
 
   .chapter-foot {
     grid-template-columns: 1fr;
-    margin-top: 56px;
+    gap: 8px 14px;
+    margin-top: 18px;
+  }
+
+  .chapter-foot p:last-child {
+    display: none;
   }
 
   .chapter-photo {
-    min-height: 540px;
+    min-height: 68svh;
   }
 
   .chapter-badge {
