@@ -688,6 +688,7 @@ h1 strong {
   top: 28px;
   right: 104px;
   padding: 6px 10px;
+  letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.82);
   background: rgba(0, 0, 0, 0.38);
 }
