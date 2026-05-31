@@ -747,18 +747,24 @@ h1 strong {
 
 .about {
   max-width: 780px;
+  padding: 56px 0 42px;
+}
+
+.about h2 {
+  margin-bottom: 18px;
+  font-size: clamp(34px, 4.4vw, 58px);
 }
 
 .about p {
   margin: 0;
   color: rgba(243, 238, 230, 0.72);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .footer {
   width: min(1120px, calc(100% - 44px));
   margin: 0 auto;
-  padding: 28px 0 48px;
+  padding: 22px 0 34px;
   display: flex;
   justify-content: space-between;
   gap: 20px;
