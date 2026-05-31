@@ -498,7 +498,7 @@ h1 strong {
   min-height: clamp(620px, 74vh, 820px);
   margin: 0 auto 76px;
   display: grid;
-  grid-template-columns: minmax(260px, 0.48fr) minmax(0, 1.52fr);
+  grid-template-columns: minmax(360px, 0.58fr) minmax(0, 1.42fr);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
   scroll-margin-top: 88px;
@@ -564,9 +564,9 @@ h1 strong {
 .album-group h3 {
   margin: 0;
   max-width: 100%;
-  font-size: clamp(26px, 3.35vw, 56px);
-  line-height: 0.96;
-  letter-spacing: -0.02em;
+  font-size: clamp(28px, 2.45vw, 44px);
+  line-height: 1;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
