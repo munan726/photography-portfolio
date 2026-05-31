@@ -30,7 +30,8 @@ a {
   text-decoration: none;
 }
 
-img {
+img,
+video {
   display: block;
   width: 100%;
   height: 100%;
@@ -360,7 +361,8 @@ h1 strong {
     0 0 0 1px rgba(199, 168, 90, 0.18);
 }
 
-.roll-frame img {
+.roll-frame img,
+.roll-frame video {
   filter: grayscale(0.34) saturate(0.56) contrast(0.96) brightness(0.62) blur(0.6px);
   transform: scale(1.025);
   transition:
@@ -368,7 +370,10 @@ h1 strong {
     filter 0.78s ease;
 }
 
-.roll-frame:hover img {
+.roll-frame:hover img,
+.roll-frame:hover video,
+.roll-frame.selected img,
+.roll-frame.selected video {
   transform: scale(1.105);
   filter: grayscale(0) saturate(1.08) contrast(1.14) brightness(0.98) blur(0);
 }
@@ -630,7 +635,8 @@ h1 strong {
   overflow: hidden;
 }
 
-.chapter-slider img {
+.chapter-slider img,
+.chapter-slider video {
   position: absolute;
   inset: 0;
   opacity: 0;
@@ -640,17 +646,20 @@ h1 strong {
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.72s ease, filter 0.32s ease;
 }
 
-.chapter-slider img.active {
+.chapter-slider img.active,
+.chapter-slider video.active {
   opacity: 1;
   transform: translateX(0);
 }
 
-.chapter-slider img.entering {
+.chapter-slider img.entering,
+.chapter-slider video.entering {
   opacity: 0.92;
   transform: translateX(-100%);
 }
 
-.chapter-slider img.leaving {
+.chapter-slider img.leaving,
+.chapter-slider video.leaving {
   opacity: 0;
   transform: translateX(18%);
 }

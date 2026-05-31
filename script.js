@@ -61,28 +61,38 @@ const getLargeImageSrc = (src) => {
 };
 
 chapterPhotos.forEach((chapter) => {
-  const mainImage = chapter.querySelector(":scope > img");
+  const mainMedia = chapter.querySelector(":scope > img, :scope > video");
   const thumbs = [...chapter.querySelectorAll(".thumb-rail img")];
-  if (!mainImage || thumbs.length < 2) return;
+  if (!mainMedia || thumbs.length < 2) return;
 
   const slider = document.createElement("div");
   slider.className = "chapter-slider";
-  const firstSlide = mainImage.cloneNode(true);
+  const firstSlide = mainMedia.cloneNode(true);
   firstSlide.classList.add("active");
+  if (firstSlide.tagName === "VIDEO") {
+    firstSlide.muted = true;
+    firstSlide.loop = true;
+    firstSlide.autoplay = true;
+    firstSlide.playsInline = true;
+    firstSlide.play?.().catch(() => {});
+  }
   slider.append(firstSlide);
-  mainImage.replaceWith(slider);
+  mainMedia.replaceWith(slider);
 
-  let currentIndex = Math.max(
-    0,
-    thumbs.findIndex((thumb) => getLargeImageSrc(thumb.src) === firstSlide.src),
-  );
+  const firstSlideIsVideo = firstSlide.tagName === "VIDEO";
+  let currentIndex = firstSlideIsVideo
+    ? -1
+    : Math.max(
+        0,
+        thumbs.findIndex((thumb) => getLargeImageSrc(thumb.src) === firstSlide.src),
+      );
   let timerId;
 
   const setActiveImage = (index) => {
-    if (index === currentIndex && slider.querySelectorAll("img").length) return;
+    if (index === currentIndex && slider.querySelector(".active")) return;
 
     currentIndex = (index + thumbs.length) % thumbs.length;
-    const previousSlide = slider.querySelector("img.active");
+    const previousSlide = slider.querySelector(".active");
     const nextSlide = document.createElement("img");
     nextSlide.src = getLargeImageSrc(thumbs[currentIndex].src);
     nextSlide.alt = thumbs[currentIndex].alt.replace("缩略图", "摄影作品主图");
@@ -97,7 +107,7 @@ chapterPhotos.forEach((chapter) => {
     });
 
     window.setTimeout(() => {
-      [...slider.querySelectorAll("img:not(.active)")].forEach((slide) => slide.remove());
+      [...slider.querySelectorAll("img:not(.active), video:not(.active)")].forEach((slide) => slide.remove());
     }, 760);
 
     thumbs.forEach((thumb, thumbIndex) => {
@@ -126,6 +136,8 @@ chapterPhotos.forEach((chapter) => {
   chapter.addEventListener("pointerenter", stopCarousel);
   chapter.addEventListener("pointerleave", startCarousel);
 
-  setActiveImage(currentIndex);
+  if (!firstSlideIsVideo) {
+    setActiveImage(currentIndex);
+  }
   startCarousel();
 });
