@@ -217,12 +217,13 @@ video {
 }
 
 .title-block {
-  margin-top: 28px;
+  margin-top: 40px;
+  padding-bottom: 18px;
 }
 
 h1 {
   margin: 0;
-  line-height: 0.85;
+  line-height: 0.95;
 }
 
 h1 span {
@@ -234,8 +235,9 @@ h1 span {
 
 h1 strong {
   display: block;
-  font-size: clamp(86px, 10vw, 172px);
-  letter-spacing: -0.09em;
+  margin-top: 8px;
+  font-size: clamp(78px, 8.8vw, 150px);
+  letter-spacing: -0.07em;
   color: transparent;
   -webkit-text-stroke: 2.2px rgba(243, 238, 230, 0.48);
   text-stroke: 2.2px rgba(243, 238, 230, 0.48);
@@ -868,7 +870,8 @@ h1 strong {
   }
 
   h1 strong {
-    font-size: clamp(68px, 20vw, 118px);
+    margin-top: 4px;
+    font-size: clamp(62px, 17vw, 104px);
     -webkit-text-stroke-width: 2px;
     text-stroke-width: 2px;
   }
